@@ -1,0 +1,26 @@
+{
+  "name": "heroku",
+  "version": "1.0.0",
+  "description": "Simple Server",
+  "main": "server.js",
+  "engines": {
+    "node": "10.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/APatil010/HerokuServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/APatil010/HerokuServer/issues"
+  },
+  "homepage": "https://github.com/APatil010/HerokuServer#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
