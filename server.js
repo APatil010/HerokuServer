@@ -7,7 +7,7 @@ app.get('/first', function (req, res) {
 })
 
 app.post('/upload', function (req,res) {
-    var temp = req.body;
+    var temp = req.body.datavalue;
     res.send(temp);
 
     console.log(temp);
