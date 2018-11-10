@@ -11,7 +11,7 @@ app.get('/first', function (req, res) {
    res.send('Hello World');
 })
 
-app.post('/upload', function (req,res) {
+app.put('/upload', function (req,res) {
     var temp = req.body.datavalue;
     res.send(temp);
 
