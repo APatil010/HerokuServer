@@ -1,9 +1,7 @@
 var express = require('express');
 var bodyParser = require("body-parser");
-var socketio = require('socket.io');
 var app = express();
 const xport = process.env.PORT || 5000
-const sport = 8888
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -29,10 +27,7 @@ var server = app.listen(xport, function () {
    console.log("Example app listening at http://%s:%s", host, xport)
 })
 
-// Creation of a Websocket server
-const socketServer = socketio.listen(sport, () => console.log(`Listening on ${ sport }`));
-
-const io = socketIO(socketServer);
+const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
     console.log('Client connected');
