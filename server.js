@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require("body-parser");
 var app = express();
 const xport = process.env.PORT || 5000
+const sport = 8888
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -31,8 +32,7 @@ var server = app.listen(xport, function () {
 
 // Creation of a Websocket server
 const socketServer = express()
-  .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+  .listen(sport, () => console.log(`Listening on ${ sport }`));
 
   const wss = new SocketServer({ socketServer });
 
