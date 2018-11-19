@@ -16,9 +16,7 @@ app.put('/upload', function (req,res) {
     var temp = req.body.datavalue;
     res.send(temp);
 
-    wss.clients.forEach((client) => {
-        client.send("mark");
-      });
+    io.emit("mark");
 
     console.log(temp);
 })
@@ -34,9 +32,9 @@ var server = app.listen(xport, function () {
 const socketServer = express()
   .listen(sport, () => console.log(`Listening on ${ sport }`));
 
-  const wss = new SocketServer({ socketServer });
+const io = socketIO(socketServer);
 
-  wss.on('connection', (ws) => {
+io.on('connection', (socket) => {
     console.log('Client connected');
-    ws.on('close', () => console.log('Client disconnected'));
-  });
+    socket.on('close', () => console.log('Client disconnected'));
+});
