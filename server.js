@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require("body-parser");
+var socketio = require('socket.io');
 var app = express();
 const xport = process.env.PORT || 5000
 const sport = 8888
@@ -29,8 +30,7 @@ var server = app.listen(xport, function () {
 })
 
 // Creation of a Websocket server
-const socketServer = express()
-  .listen(sport, () => console.log(`Listening on ${ sport }`));
+const socketServer = socketio.listen(sport, () => console.log(`Listening on ${ sport }`));
 
 const io = socketIO(socketServer);
 
