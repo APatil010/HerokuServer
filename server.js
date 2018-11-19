@@ -15,6 +15,10 @@ app.put('/upload', function (req,res) {
     var temp = req.body.datavalue;
     res.send(temp);
 
+    wss.clients.forEach((client) => {
+        client.send("mark");
+      });
+
     console.log(temp);
 })
 
@@ -24,3 +28,15 @@ var server = app.listen(xport, function () {
    
    console.log("Example app listening at http://%s:%s", host, xport)
 })
+
+// Creation of a Websocket server
+const socketServer = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+  const wss = new SocketServer({ socketServer });
+
+  wss.on('connection', (ws) => {
+    console.log('Client connected');
+    ws.on('close', () => console.log('Client disconnected'));
+  });
